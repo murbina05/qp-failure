@@ -39,7 +39,7 @@ MAX_RUNNING = 8
 # By default, reads with no primers are excluded
 
 QC_REFERENCE = environ["QC_REFERENCE"]
-IVAR_TRIM_BASE = 'ivar trim -x 5 -e -i %s -b %s -p %s '
+IVAR_TRIM_BASE = 'ivar trim -x 5 -e -b %s -p reads.trimmed  -i %s'
 
 #IVAR_TRIM_CMD = ' '.join([IVAR_TRIM_BASE, ' -o {out_dir}/%s -O {out_dir}/%s'])
 IVAR_TRIM_CMD = IVAR_TRIM_BASE
@@ -67,7 +67,7 @@ def _generate_commands(BAM_file, prefix, out_dir):
 #        cmd =_CMD_SINGLE
 #        if database is not None:
 #            cmd = COMBINED_CMD_SINGLE
-    command = cmd.format(BAM_file=BAM_file, primer=QC_REFERENCE, prefix=prefix,
+    command = cmd.format(primer=QC_REFERENCE, BAM_file=BAM_file,
                          out_dir=out_dir)
 
     out_files = []
