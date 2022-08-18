@@ -48,7 +48,7 @@ def get_dbs_list():
     folder = QC_REFERENCE
     # skip human database
     list = [basename(f) for f in glob(f'{folder}/*.bed')]
-    return QC_REFERENC
+    return list
 
 
 # might need to add envrionment var, passes database
