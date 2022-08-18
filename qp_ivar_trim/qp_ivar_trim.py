@@ -39,7 +39,7 @@ MAX_RUNNING = 8
 # By default, reads with no primers are excluded
 
 QC_REFERENCE = environ["QC_REFERENCE"]
-IVAR_TRIM_BASE = 'ivar trim -x 5 -e -i %s -b %s -p %s -m %s -q %s -s %s'
+IVAR_TRIM_BASE = 'ivar trim -x 5 -e -i %s -b %s -p %s '
 
 IVAR_TRIM_CMD = ' '.join([IVAR_TRIM_BASE, ' -o {out_dir}/%s -O {out_dir}/%s'])
 
@@ -57,8 +57,7 @@ def get_dbs_list():
 # might need to add envrionment var, passes database
 # however not need due to not using minimap2 :/
 
-def _generate_commands(BAM_file, prefix, out_dir,
-                       min_length=30, min_quality=20, slideing_window_width=4):
+def _generate_commands(BAM_file, prefix, out_dir):
     """Helper function to generate commands and facilite testing"""
     files = BAM_file
     cmd = IVAR_TRIM_CMD
@@ -69,8 +68,6 @@ def _generate_commands(BAM_file, prefix, out_dir,
 #        if database is not None:
 #            cmd = COMBINED_CMD_SINGLE
     command = cmd.format(BAM_file=BAM_file, primer=QC_REFERENCE, prefix=prefix,
-                         min_length=min_length, min_quality=min_quality,
-                         slideing_window_width=slideing_window_width,
                          out_dir=out_dir)
 
     out_files = []
