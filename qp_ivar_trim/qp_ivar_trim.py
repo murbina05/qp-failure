@@ -43,7 +43,7 @@ IVAR_TRIM_BASE = 'ivar trim -x {nprocs} -e -b {primer} -i %s'
 
 IVAR_TRIM_CMD = ' '.join([IVAR_TRIM_BASE, '-p {out_dir}/%s'])
 # i dont think i need this part
-def get_ref():
+def get_dbs_list():
 
     folder = QC_REFERENCE
     # skip human database
