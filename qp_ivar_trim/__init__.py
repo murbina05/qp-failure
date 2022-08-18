@@ -34,10 +34,10 @@ opt_params = {
 outputs = {'Filtered files': 'per_sample_fastq'}
 default_params = {
     'auto-detect adapters only filtering [not recommended]': {
-        'reference': "None", 'threads': THREADS}}
+        'primer': "None", 'threads': THREADS}}
 for db in dbs_without_extension:
     name = f'auto-detect adapters and {db} + phix filtering'
-    default_params[name] = {'reference': db, 'threads': THREADS}
+    default_params[name] = {'primer': db, 'threads': THREADS}
 
 IVAR_TRIM_cmd = QiitaCommand(
     'Trim reads in aligned BAM ', "",
