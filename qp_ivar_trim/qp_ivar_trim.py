@@ -41,8 +41,8 @@ MAX_RUNNING = 8
 QC_REFERENCE = environ["QC_REFERENCE"]
 IVAR_TRIM_BASE = 'ivar trim -x 5 -e -i %s -b %s -p %s '
 
-IVAR_TRIM_CMD = ' '.join([IVAR_TRIM_BASE, ' -o {out_dir}/%s -O {out_dir}/%s'])
-
+#IVAR_TRIM_CMD = ' '.join([IVAR_TRIM_BASE, ' -o {out_dir}/%s -O {out_dir}/%s'])
+IVAR_TRIM_CMD = IVAR_TRIM_BASE
 # i dont think i need this part
 
 
