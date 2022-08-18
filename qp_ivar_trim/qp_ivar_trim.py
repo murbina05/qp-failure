@@ -54,9 +54,9 @@ def get_dbs_list():
 # might need to add envrionment var, passes database
 # however not need due to not using minimap2 :/
 
-def _generate_commands(BAM_file, reference, nprocs, out_dir):
+def _generate_commands(bam_file, reference, nprocs, out_dir):
     """Helper function to generate commands and facilite testing"""
-    files = BAM_file
+    files = bam_file
     cmd = IVAR_TRIM_CMD
 #        if database is not None:
 #            cmd = COMBINED_CMD
@@ -68,8 +68,8 @@ def _generate_commands(BAM_file, reference, nprocs, out_dir):
 
     out_files = []
     commands = []
-    for BAM_file in files:
-        fname = basename(BAM_file)
+    for bam_file in files:
+        fname = basename(bam_file)
         out_files.append((f'{out_dir}/{fname}',
                          'trimmed'))  # might be trimmed
 #        if rev_fp:

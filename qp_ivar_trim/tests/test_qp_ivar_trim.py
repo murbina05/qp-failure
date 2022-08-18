@@ -52,15 +52,15 @@ class IvarTrimTests(PluginTestCase):
         params = {'nprocs': 2,
                   'out_dir': '/foo/bar/output'}
         # need to change these to bam
-        BAM_file = ['untrimmed1.sorted.bam',
+        bam_file = ['untrimmed1.sorted.bam',
                     'untrimmed2.sorted.bam']
-        obs = _generate_commands(BAM_file, params['nprocs'],
-                                 params['out_dir'])
+        obs = _generate_commands(params['reference'], params['nprocs'],
+                                 params['out_dir'], params['fname'])
         cmd = IVAR_TRIM_CMD.format(**params)
         ecmds = [cmd % (bam, bam)
-                 for bam in BAM_file]
+                 for bam in bam_file]
         eof = [(f'{params["out_dir"]}/{bam}', 'trimmed')
-               for bam in BAM_file]
+               for bam in bam_file]
         self.assertCountEqual(obs[0], ecmds)
         self.assertCountEqual(obs[1], eof)
 

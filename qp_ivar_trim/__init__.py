@@ -23,12 +23,15 @@ dbs = get_dbs_list()
 dbs_without_extension = [splitext(db)[0] for db in dbs]
 dbs_defaults = ', '.join([f'"{x}"' for x in dbs_without_extension])
 req_params = {'input': ('artifact', ['per_sample_FASTQ'])}
+#req_params = {'input': ('artifact', ['per_sample_BAM'])}
+
 opt_params = {
-    'reference': [
+    'primer': [
         f'choice:["None", {dbs_defaults}]', dbs_without_extension],
     'threads': ['integer', f'{THREADS}']}
 
-outputs = {'Filtered files': 'bam'}
+#outputs = {'Filtered files': 'bam'}
+outputs = {'Filtered files': 'per_sample_fastq'}
 default_params = {
     'auto-detect adapters only filtering [not recommended]': {
         'reference': "None", 'threads': THREADS}}
