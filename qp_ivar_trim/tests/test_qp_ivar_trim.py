@@ -31,7 +31,7 @@ class IvarTrimTests(PluginTestCase):
         self.out_dir = out_dir
         self.dbs = get_dbs_list()
         self.db_path = QC_REFERENCE  # need to make envrionment variable
-        self.params = {'reference': 'artifacts', 'threads': 2}
+        self.params = {'primer': 'primer', 'threads': 5}
         self._clean_up_files = []
         self._clean_up_files.append(out_dir)
 
@@ -49,13 +49,16 @@ class IvarTrimTests(PluginTestCase):
         # might need to change this
 
     def test_generate_commands(self):
-        params = {'nprocs': 2,
+        params = {'nprocs': 5,
+                  'primer': 'primer',
                   'out_dir': '/foo/bar/output'}
         # need to change these to bam
         bam_file = ['untrimmed1.sorted.bam',
                     'untrimmed2.sorted.bam']
-        obs = _generate_commands(params['reference'], params['nprocs'],
-                                 params['out_dir'], params['fname'])
+        obs = _generate_commands(bam_file, 
+                                 params['primer'], 
+                                 params['nprocs'],
+                                 params['out_dir'])
         cmd = IVAR_TRIM_CMD.format(**params)
         ecmds = [cmd % (bam, bam)
                  for bam in bam_file]
@@ -64,7 +67,7 @@ class IvarTrimTests(PluginTestCase):
         self.assertCountEqual(obs[0], ecmds)
         self.assertCountEqual(obs[1], eof)
 
-
+'''
     def test_ivar_trim(self):
         # inserting new prep template
         prep_info_dict = {
@@ -218,7 +221,7 @@ class IvarTrimTests(PluginTestCase):
         #    f'{out_dir}/S22282_S102_L001_R1_001.fastq.gz -2 '
         #    f'{out_dir}/S22282_S102_L001_R2_001.fastq.gz'
         self.assertEqual(commands, exp_commands)
-
+'''
 
 # def test_fastp_minimap2_just_fwd(self):
     #     # inserting new prep template
