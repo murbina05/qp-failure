@@ -57,7 +57,7 @@ def get_dbs_list():
 # might need to add envrionment var, passes database
 # however not need due to not using minimap2 :/
 
-def _generate_commands(BAM_file, prefix, out_dir):
+def _generate_commands(BAM_file, out_dir):
     """Helper function to generate commands and facilite testing"""
     files = BAM_file
     cmd = IVAR_TRIM_CMD
@@ -67,8 +67,7 @@ def _generate_commands(BAM_file, prefix, out_dir):
 #        cmd =_CMD_SINGLE
 #        if database is not None:
 #            cmd = COMBINED_CMD_SINGLE
-    command = cmd.format(primer=QC_REFERENCE, BAM_file=BAM_file,
-                         out_dir=out_dir)
+    command = cmd.format(primer=QC_REFERENCE, BAM_file=BAM_file)
 
     out_files = []
     commands = []
@@ -88,7 +87,7 @@ def _generate_commands(BAM_file, prefix, out_dir):
     return commands, out_files
 
 
-def ivar_trim(qclient, job_id, parameters, out_dir):
+def ivar_trim(qclient, job_id, out_dir):
     """Run ivar trim with the given parameters
 
     Parameters
