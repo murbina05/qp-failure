@@ -67,11 +67,11 @@ class IvarTrimTests(PluginTestCase):
         self.assertCountEqual(obs[0], ecmds)
         self.assertCountEqual(obs[1], eof)
 
-'''
+
     def test_ivar_trim(self):
         # inserting new prep template
         prep_info_dict = {
-            'SKB8.640193': {'run_prefix': 'CALM_SEP'}}
+            'SKB8.640193': {'run_prefix': 'CALM_SEP_001970_03'}}
         data = {'prep_info': dumps(prep_info_dict),
                 # magic #1 = testing study
                 'study': 1,
@@ -98,7 +98,7 @@ class IvarTrimTests(PluginTestCase):
             'filepaths': dumps([
                 (fp1_1, 'bam')]
                 (fp1_2, 'bam')),
-            'type': "per_sample_bam",
+            'type': "per_sample_fastq",
             'name': "Test artifact",
             'prep': pid}
         aid = self.qclient.post('/apitest/artifact/', data=data)['artifact']
@@ -108,7 +108,7 @@ class IvarTrimTests(PluginTestCase):
         data = {'user': 'demo@microbio.me',
                 'command': dumps([plugin_details['name'],
                                   plugin_details['version'],
-                                  'Trimming']),
+                                  'Ivar Trimming']),
                 'status': 'running',
                 'parameters': dumps(self.params)}
         job_id = self.qclient.post(
@@ -205,11 +205,7 @@ class IvarTrimTests(PluginTestCase):
         # VAR_TRIM_BASE = 'ivar trim -x 5 -e
         # -i %s -b %s -p %s [-m %s] [-q %s] [-s %s]'
         # apath = dirname(artifact_info['files']['bam'][0])
-        exp_commands = ['ivar trim -x 5 -e',
-                        '-i CALM_SEP_001970_03_S265_L001.sorted.bam',
-                        '-b {QC_REFERENCE}',
-                        '-p CALM_SEP_001970_03_S265_L001.sorted.trimmed',
-                        '-m 100 -q 15 -s 4  ']
+        exp_commands = ['ivar trim -x {nprocs} -e -b {primer} -i CALM_SEP_001970_03_S265_L001.sorted.bam -p {out_dir}/%s ']
         #   f'-I {apath}/S22205_S104_L001_R2_0
         #   01.fastq.gz --stdout | '
         #    'samtools fastq -@ 2 -f  12 -F 256 -1 '
@@ -221,7 +217,7 @@ class IvarTrimTests(PluginTestCase):
         #    f'{out_dir}/S22282_S102_L001_R1_001.fastq.gz -2 '
         #    f'{out_dir}/S22282_S102_L001_R2_001.fastq.gz'
         self.assertEqual(commands, exp_commands)
-'''
+
 
 # def test_fastp_minimap2_just_fwd(self):
     #     # inserting new prep template
