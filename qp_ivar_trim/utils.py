@@ -16,7 +16,7 @@ from qiita_client import QiitaClient
 
 
 plugin_details = {'name': 'qp-ivar-trim',
-                  'version': '2022.08',
+                  'version': '2022.04',
                   'description': 'ivar trimmming of bam files'}
 
 

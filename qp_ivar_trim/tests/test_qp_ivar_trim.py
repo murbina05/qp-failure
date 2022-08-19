@@ -195,8 +195,8 @@ class IvarTrimTests(PluginTestCase):
         self.assertEqual(finish_qsub, exp_finish_qsub)
 
         exp_out_files = [
-            f'{out_dir}/CALM_SEP_001970_03_S265_L001.sorted.bam\tbam\n',
-            f'{out_dir}/CALM_SEP_001970_03_S265_L002.sorted.bam\tbam\n']
+            f'{out_dir}/CALM_SEP_001970_03_S265_L001.trimmed.sorted.bam\tbam\n',
+            f'{out_dir}/CALM_SEP_001970_03_S265_L002.trimmed.sorted.bam\tbam\n']
         self.assertEqual(out_files, exp_out_files)
 
         # the easiest to figure out the
