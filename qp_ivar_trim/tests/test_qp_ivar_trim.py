@@ -205,7 +205,7 @@ class IvarTrimTests(PluginTestCase):
         # VAR_TRIM_BASE = 'ivar trim -x 5 -e
         # -i %s -b %s -p %s [-m %s] [-q %s] [-s %s]'
         # apath = dirname(artifact_info['files']['bam'][0])
-        exp_commands = ['ivar trim -x {nprocs} -e -b {primer} -i CALM_SEP_001970_03_S265_L001.sorted.bam -p {out_dir}/%s ']
+        exp_commands = 'ivar trim -x {nprocs} -e -b {primer} -i CALM_SEP_001970_03_S265_L001.sorted.bam -p {out_dir}/%s '
         #   f'-I {apath}/S22205_S104_L001_R2_0
         #   01.fastq.gz --stdout | '
         #    'samtools fastq -@ 2 -f  12 -F 256 -1 '
