@@ -42,12 +42,12 @@ class IvarTrimTests(PluginTestCase):
                     rmtree(fp)
                 else:
                     remove(fp)
-
+'''
     def test_get_dbs_list(self):
         dbs = get_dbs_list()
         self.assertCountEqual(dbs, ['primer.bed'])
         # might need to change this
-'''
+
     def test_generate_commands(self):
         params = {'nprocs': 5,
                   'primer': 'primer',
