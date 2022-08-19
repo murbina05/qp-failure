@@ -27,7 +27,7 @@ req_params = {'input': ('artifact', ['per_sample_FASTQ'])}
 
 opt_params = {
     'primer': [
-        f'choice:["None", {dbs_defaults}]'],
+        f'choice:["None", {dbs_defaults}]', dbs_without_extension],
     'threads': ['integer', f'{THREADS}']}
 
 #outputs = {'Filtered files': 'bam'}
