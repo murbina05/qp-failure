@@ -42,11 +42,12 @@ class IvarTrimTests(PluginTestCase):
                     rmtree(fp)
                 else:
                     remove(fp)
-'''
-    def test_get_dbs_list(self):
-        dbs = get_dbs_list()
-        self.assertCountEqual(dbs, ['primer.bed'])
+
+#    def test_get_dbs_list(self):
+#        dbs = get_dbs_list()
+#        self.assertCountEqual(dbs, ['primer.bed'])
         # might need to change this
+
 
     def test_generate_commands(self):
         params = {'nprocs': 5,
@@ -67,7 +68,7 @@ class IvarTrimTests(PluginTestCase):
         self.assertCountEqual(obs[0], ecmds)
         self.assertCountEqual(obs[1], eof)
 
-
+''' 
     def test_ivar_trim(self):
         # inserting new prep template
         prep_info_dict = {
@@ -358,7 +359,7 @@ class IvarTrimTests(PluginTestCase):
     #         '- -a  | samtools fastq -@ 2 -f  4 -0 '
     #         f'{out_dir}/S22282_S102_L001_R1_001.fastq.gz']
     #     self.assertEqual(commands, exp_commands)
-    
+ 
 '''
 if __name__ == '__main__':
             main()
